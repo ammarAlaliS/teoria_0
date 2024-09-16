@@ -8,14 +8,17 @@ class Contador extends StatefulWidget {
 }
 
 class _ContadorState extends State<Contador> {
-  int _contador =25;
+  int _contador = 25;
+
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
-        backgroundColor: const Color.fromARGB(255, 11, 76, 206),
+        title: const Text(
+          "Contador",
+          style: TextStyle(color: Colors.amber),
+        ),
+        backgroundColor: const Color.fromARGB(255, 183, 33, 33),
       ),
       body: Center(
         child: Text(
@@ -24,13 +27,15 @@ class _ContadorState extends State<Contador> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  
-          setState(() {
-             _contador++;
-          });
-        },
-        child: const Icon(Icons.add), 
+        onPressed: _incrementar,
+        child: const Icon(Icons.add),
       ),
     );
   }
+
+  void _incrementar() {
+    setState(() {
+      _contador++;
+    });
   }
+}
