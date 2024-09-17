@@ -19,7 +19,7 @@ class _Pagina1State extends State<Pagina1> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/pagina2');
+          Navigator.pushReplacementNamed(context, '/pagina2');
         },
         child: const Icon(Icons.nat),
       ),

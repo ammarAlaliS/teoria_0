@@ -19,9 +19,9 @@ class _Pagina2State extends State<Pagina2> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pop(context); // Correctly closing the current page
+          Navigator.pop(context);
         },
-        child: const Icon(Icons.arrow_back), // Change to a back arrow icon if appropriate
+        child: const Icon(Icons.arrow_back), 
       ),
     );
   }
