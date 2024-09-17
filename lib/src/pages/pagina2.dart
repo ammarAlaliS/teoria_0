@@ -10,9 +10,18 @@ class Pagina2 extends StatefulWidget {
 class _Pagina2State extends State<Pagina2> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("pagina 2"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Página 2"),
+      ),
+      body: const Center(
+        child: Text("Página 2"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context); // Correctly closing the current page
+        },
+        child: const Icon(Icons.arrow_back), // Change to a back arrow icon if appropriate
       ),
     );
   }
