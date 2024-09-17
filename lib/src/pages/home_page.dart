@@ -9,28 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double _width = 50;
-  double _height = 50;
-  Color _color = Colors.green;
-  BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
-
-  // opacidad
-  double opacityLevel = 1.0;
-  void cambiarOpacidad() {
-    setState(() {
-      opacityLevel = opacityLevel == 0 ? 1.0 : 0.0;
-      final random = Random();
-      _width = random.nextInt(300).toDouble();
-      _height = random.nextInt(300).toDouble();
-      _color = Color.fromRGBO(
-        random.nextInt(256),
-        random.nextInt(256),
-        random.nextInt(256),
-        1,
-      );
-      _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
-    });
-  }
+  double targetValue = 24.0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +18,29 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Animaciones"),
       ),
       body: Center(
-        child: AnimatedOpacity(
-          duration: Duration(seconds: 2),
-          opacity: opacityLevel,
-          child: AnimatedContainer(
-            width: _width,
-            height: _height,
-            decoration: BoxDecoration(
-              color: _color,
-              borderRadius: _borderRadius,
-            ),
-            duration: const Duration(seconds: 1),
-            curve: Curves.bounceOut,
-          ),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 24.0, end: targetValue),
+          duration: const Duration(seconds: 1),
+          builder: (BuildContext context, double size, Widget? child) {
+            return IconButton(
+              iconSize: size,
+              color: Colors.blue,
+              onPressed: () {
+                setState(() {
+                  targetValue = targetValue == 24.0 ? 48.0 : 24.0;
+                });
+              },
+              icon: child!,
+            );
+          },
+          child: const Icon(Icons.aspect_ratio),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          cambiarOpacidad();
+          setState(() {
+            targetValue = targetValue == 24.0 ? 48.0 : 24.0;
+          });
         },
         child: const Icon(Icons.refresh),
       ),
