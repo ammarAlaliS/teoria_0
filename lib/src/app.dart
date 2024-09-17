@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/pagina1.dart';
-import './pages/pagina2.dart';
+import './pages/calculadora.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,12 +7,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Navegacion",
-      initialRoute: '/pagina1',
-      routes: {
-        '/pagina1': (BuildContext context) => const Pagina1(),
-        '/pagina2': (BuildContext context) => const Pagina2(),
-      },
+      debugShowCheckedModeBanner: false,
+      title: "Calculara",
+      home:  CalApp(),
     );
   }
 }
