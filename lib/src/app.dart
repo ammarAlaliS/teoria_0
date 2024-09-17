@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/calculadora.dart';
+import './pages/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Calculara",
-      home:  CalApp(),
+      title: "Animaciones",
+      home:  HomePage(),
     );
   }
 }
