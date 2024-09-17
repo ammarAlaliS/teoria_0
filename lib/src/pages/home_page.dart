@@ -14,6 +14,24 @@ class _HomePageState extends State<HomePage> {
   Color _color = Colors.green;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
 
+  // opacidad
+  double opacityLevel = 1.0;
+  void cambiarOpacidad() {
+    setState(() {
+      opacityLevel = opacityLevel == 0 ? 1.0 : 0.0;
+      final random = Random();
+      _width = random.nextInt(300).toDouble();
+      _height = random.nextInt(300).toDouble();
+      _color = Color.fromRGBO(
+        random.nextInt(256),
+        random.nextInt(256),
+        random.nextInt(256),
+        1,
+      );
+      _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,30 +39,24 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Animaciones"),
       ),
       body: Center(
-        child: AnimatedContainer(
-          width: _width,
-          height: _height,
-          decoration: BoxDecoration(
-            color: _color,
-            borderRadius: _borderRadius,
+        child: AnimatedOpacity(
+          duration: Duration(seconds: 2),
+          opacity: opacityLevel,
+          child: AnimatedContainer(
+            width: _width,
+            height: _height,
+            decoration: BoxDecoration(
+              color: _color,
+              borderRadius: _borderRadius,
+            ),
+            duration: const Duration(seconds: 1),
+            curve: Curves.bounceOut,
           ),
-          duration: const Duration(seconds: 1),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            final random = Random();
-            _width = random.nextInt(300).toDouble();
-            _height = random.nextInt(300).toDouble();
-            _color = Color.fromRGBO(
-              random.nextInt(256),
-              random.nextInt(256),
-              random.nextInt(256),
-              1,
-            );
-            _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
-          });
+          cambiarOpacidad();
         },
         child: const Icon(Icons.refresh),
       ),
