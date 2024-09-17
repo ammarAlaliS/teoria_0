@@ -32,7 +32,19 @@ class _ContadorState extends State<Contador> {
               )
 
               ,
-            )
+            ),
+             SizedBox(
+              height: 250.0,
+              width: 350.0,
+              child: 
+              Image.network("https://api.reliasoftware.com/uploads/what_is_flutter_fcb6c7a4b8.png",
+                fit: BoxFit.fitWidth,
+              )
+
+              ,
+            ),
+
+
           ],
         ),
       ),
